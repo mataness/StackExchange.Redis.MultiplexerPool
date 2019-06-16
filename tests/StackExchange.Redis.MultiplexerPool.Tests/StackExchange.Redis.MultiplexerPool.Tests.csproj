@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>StackExchange.Redis.MultiplexerPool.Tests</AssemblyName>
+    <RootNamespace>StackExchange.Redis.MultiplexerPool.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infra\Collections\RoundRobinTests.cs" />
+    <Compile Remove="MultiplexerPools\ConnectionMultiplexerPoolDisposerMock.cs" />
+    <Compile Remove="MultiplexerPools\LoadBasedConnectionMultiplexerPoolTests.cs" />
+    <Compile Remove="MultiplexerPools\RoundRobinConnectionMultiplexerPoolTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.9.0" />
+    <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
+    <PackageReference Include="Moq" Version="4.11.0" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="TestStack.BDDfy" Version="4.3.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\StackExchange.Redis.MultiplexerPool\StackExchange.Redis.MultiplexerPool.csproj" />
+  </ItemGroup>
+
+</Project>
