@@ -13,6 +13,9 @@
     <Company>StackExchange.Redis.MultiplexerPool</Company>
     <AssemblyName>StackExchange.Redis.MultiplexerPool</AssemblyName>
     <RootNamespace>StackExchange.Redis.MultiplexerPool</RootNamespace>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Bugfix: The ReconnectableConnectionMultiplexer.ConnectionTimeUtc wasn't updated on ReconnectAsync
+</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

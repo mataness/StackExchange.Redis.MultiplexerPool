@@ -56,6 +56,8 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
                     {
                         await previousConnection.SafeCloseAsync(allowCommandsToComplete).ConfigureAwait(false);
                     }
+
+                    ConnectionTimeUtc = DateTime.UtcNow;
                 }
             }
         }

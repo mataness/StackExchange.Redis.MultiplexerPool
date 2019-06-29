@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
@@ -45,10 +46,14 @@ namespace StackExchange.Redis.MultiplexerPool.Tests.Multiplexers
         public void Closes_previous_connection_only_after_a_new_one_has_been_created_when_reconnecting(bool allowCommandsToComplete, bool fireAndForgetOnClose)
         {
             this.When(_ => Reconnecting(allowCommandsToComplete, fireAndForgetOnClose))
-                .Then(_ => A_new_connection_has_been_created())
+                .Then(_ => The_connection_time_has_been_updated_to_utc_now())
+                .And(_ => A_new_connection_has_been_created())
                 .And(_ => After_that_the_previous_connection_has_been_closed())
                 .BDDfy();
         }
+
+        private void The_connection_time_has_been_updated_to_utc_now()
+            => _reconnectableConnectionMultiplexer.ConnectionTimeUtc.Should().BeCloseTo(DateTime.UtcNow);
 
         private Task Reconnecting(bool allowCommandsToComplete, bool fireAndForgetOnClose)
             => _reconnectableConnectionMultiplexer.ReconnectAsync(allowCommandsToComplete, fireAndForgetOnClose);
