@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>StackExchange.Redis.MultiplexerPool.Tests</AssemblyName>
     <RootNamespace>StackExchange.Redis.MultiplexerPool.Tests</RootNamespace>
   </PropertyGroup>
