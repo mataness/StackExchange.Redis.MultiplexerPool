@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using StackExchange.Redis.Maintenance;
 using StackExchange.Redis.MultiplexerPool.Infra.Common;
 using StackExchange.Redis.Profiling;
 
@@ -21,6 +22,10 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
 
         /// <inheritdoc />
         public void Dispose()
+            => throw CreateDisposeNotAllowedException();
+        
+        /// <inheritdoc />
+        public ValueTask DisposeAsync()
             => throw CreateDisposeNotAllowedException();
 
         /// <inheritdoc />
@@ -87,6 +92,10 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
         /// <inheritdoc />
         public IServer GetServer(EndPoint endpoint, object asyncState = null)
             => _wrappedConnectionMultiplexer.GetServer(endpoint, asyncState);
+
+        /// <inheritdoc />
+        public IServer[] GetServers()
+            => _wrappedConnectionMultiplexer.GetServers();
 
 
         /// <inheritdoc />
@@ -231,6 +240,12 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
         {
             add => _wrappedConnectionMultiplexer.ConfigurationChangedBroadcast += value;
             remove => _wrappedConnectionMultiplexer.ConfigurationChangedBroadcast -= value;
+        }
+
+        public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent
+        {
+            add => _wrappedConnectionMultiplexer.ServerMaintenanceEvent += value;
+            remove => _wrappedConnectionMultiplexer.ServerMaintenanceEvent -= value;
         }
 
         /// <inheritdoc />
