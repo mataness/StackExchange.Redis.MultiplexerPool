@@ -1,26 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Description>An extension library for StackExchange.Redis which adds Multiplexer connection pool abstraction and implementation</Description>
-    <PackageTags>Redis, StackExchange.Redis, Connection pool, Multiplexer</PackageTags>
-    <PackageProjectUrl>https://github.com/mataness/StackExchange.Redis.MultiplexerPool</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/mataness/StackExchange.Redis.MultiplexerPool</RepositoryUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageId>StackExchange.Redis.MultiplexerPool</PackageId>
-    <Authors>StackExchange.Redis.MultiplexerPool</Authors>
-    <Company>StackExchange.Redis.MultiplexerPool</Company>
-    <AssemblyName>StackExchange.Redis.MultiplexerPool</AssemblyName>
-    <RootNamespace>StackExchange.Redis.MultiplexerPool</RootNamespace>
-    <Version>1.0.2</Version>
-    <PackageReleaseNotes>Bugfix: The ReconnectableConnectionMultiplexer.ConnectionTimeUtc wasn't updated on ReconnectAsync
-</PackageReleaseNotes>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<Description>An extension library for StackExchange.Redis which adds Multiplexer connection pool abstraction and implementation</Description>
+		<PackageTags>Redis, StackExchange.Redis, Connection pool, Multiplexer</PackageTags>
+		<PackageProjectUrl>https://github.com/mataness/StackExchange.Redis.MultiplexerPool</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/mataness/StackExchange.Redis.MultiplexerPool</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageId>StackExchange.Redis.MultiplexerPool</PackageId>
+		<Authors>StackExchange.Redis.MultiplexerPool</Authors>
+		<Company>StackExchange.Redis.MultiplexerPool</Company>
+		<AssemblyName>StackExchange.Redis.MultiplexerPool</AssemblyName>
+		<RootNamespace>StackExchange.Redis.MultiplexerPool</RootNamespace>
+		<Version>2.0.1</Version>
+		<PackageReleaseNotes>
+			2.0.1
+			- Fixing GetServers
+			2.0.0
+			- Moving to .NET Standard 2.1 and updating Redis package to 2.6.111
+			1.0.2
+			- Bugfix: The ReconnectableConnectionMultiplexer.ConnectionTimeUtc wasn't updated on ReconnectAsync
+		</PackageReleaseNotes>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.0.0" />
-    <PackageReference Include="StackExchange.Redis" Version="2.2.79" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Nito.AsyncEx.Coordination" Version="5.0.0" />
+		<PackageReference Include="StackExchange.Redis" Version="2.6.111" />
+	</ItemGroup>
 
 </Project>
