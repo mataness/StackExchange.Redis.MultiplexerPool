@@ -13,8 +13,10 @@
 		<Company>StackExchange.Redis.MultiplexerPool</Company>
 		<AssemblyName>StackExchange.Redis.MultiplexerPool</AssemblyName>
 		<RootNamespace>StackExchange.Redis.MultiplexerPool</RootNamespace>
-		<Version>2.0.0</Version>
+		<Version>2.0.1</Version>
 		<PackageReleaseNotes>
+			2.0.1
+			- Fixing GetServers
 			2.0.0
 			- Moving to .NET Standard 2.1 and updating Redis package to 2.6.111
 			1.0.2
