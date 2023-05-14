@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using StackExchange.Redis.Maintenance;
 using StackExchange.Redis.MultiplexerPool.Infra.Common;
 using StackExchange.Redis.Profiling;
 
@@ -22,6 +23,10 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
         /// <inheritdoc />
         public void Dispose()
             => throw CreateDisposeNotAllowedException();
+
+        /// <inheritdoc />
+        public ValueTask DisposeAsync()
+            => new ValueTask(Task.FromException(CreateDisposeNotAllowedException()));
 
         /// <inheritdoc />
         public Task SafeCloseAsync(bool allowCommandsToComplete = true)
@@ -87,6 +92,11 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
         /// <inheritdoc />
         public IServer GetServer(EndPoint endpoint, object asyncState = null)
             => _wrappedConnectionMultiplexer.GetServer(endpoint, asyncState);
+
+        public IServer[] GetServers()
+        {
+            throw new NotImplementedException();
+        }
 
 
         /// <inheritdoc />
@@ -178,6 +188,7 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
         public bool IsConnecting => _wrappedConnectionMultiplexer.IsConnecting;
 
         /// <inheritdoc />
+        [Obsolete("Obsolete")]
         public bool IncludeDetailInExceptions
         {
             get => _wrappedConnectionMultiplexer.IncludeDetailInExceptions;
@@ -232,6 +243,8 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
             add => _wrappedConnectionMultiplexer.ConfigurationChangedBroadcast += value;
             remove => _wrappedConnectionMultiplexer.ConfigurationChangedBroadcast -= value;
         }
+
+        public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent;
 
         /// <inheritdoc />
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved
