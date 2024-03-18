@@ -157,6 +157,10 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
         public void ExportConfiguration(Stream destination, ExportOptions options = ExportOptions.All)
             => _wrappedConnectionMultiplexer.ExportConfiguration(destination, options);
 
+        /// <inheritdoc />
+        public void AddLibraryNameSuffix(string suffix)
+            => _wrappedConnectionMultiplexer.AddLibraryNameSuffix(suffix);
+
 
         /// <inheritdoc />
         public string ClientName => _wrappedConnectionMultiplexer.ClientName;
@@ -243,7 +247,11 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
             remove => _wrappedConnectionMultiplexer.ConfigurationChangedBroadcast -= value;
         }
 
-        public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent;
+        public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent
+        {
+            add => _wrappedConnectionMultiplexer.ServerMaintenanceEvent += value;
+            remove => _wrappedConnectionMultiplexer.ServerMaintenanceEvent -= value;
+        }
 
         /// <inheritdoc />
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved
