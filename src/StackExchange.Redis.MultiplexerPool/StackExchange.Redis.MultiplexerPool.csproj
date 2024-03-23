@@ -13,8 +13,10 @@
 		<Company>StackExchange.Redis.MultiplexerPool</Company>
 		<AssemblyName>StackExchange.Redis.MultiplexerPool</AssemblyName>
 		<RootNamespace>StackExchange.Redis.MultiplexerPool</RootNamespace>
-		<Version>2.0.1</Version>
+		<Version>2.1.0</Version>
 		<PackageReleaseNotes>
+			2.1.0
+			- Updating depdencies
 			2.0.1
 			- Fixing GetServers
 			2.0.0
