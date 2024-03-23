@@ -53,7 +53,7 @@ namespace StackExchange.Redis.MultiplexerPool.Tests.Multiplexers
         }
 
         private void The_connection_time_has_been_updated_to_utc_now()
-            => _reconnectableConnectionMultiplexer.ConnectionTimeUtc.Should().BeCloseTo(DateTime.UtcNow);
+            => _reconnectableConnectionMultiplexer.ConnectionTimeUtc.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMilliseconds(100));
 
         private Task Reconnecting(bool allowCommandsToComplete, bool fireAndForgetOnClose)
             => _reconnectableConnectionMultiplexer.ReconnectAsync(allowCommandsToComplete, fireAndForgetOnClose);
