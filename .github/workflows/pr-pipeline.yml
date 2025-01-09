@@ -27,3 +27,15 @@ jobs:
 
       - name: Run tests
         run: dotnet test --no-restore --verbosity normal
+        
+      - name: Run code linting
+        run: dotnet format --verify-no-changes
+        continue-on-error: true
+      
+      - name: Check code coverage
+        run: dotnet test --collect:"XPlat Code Coverage"
+  
+      - name: Run security scan
+        uses: github/codeql-action/init@v1
+        with:
+          languages: csharp
