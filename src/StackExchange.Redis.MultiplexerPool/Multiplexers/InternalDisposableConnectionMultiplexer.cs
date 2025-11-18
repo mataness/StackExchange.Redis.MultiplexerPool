@@ -93,6 +93,12 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
         public IServer GetServer(EndPoint endpoint, object asyncState = null)
             => _wrappedConnectionMultiplexer.GetServer(endpoint, asyncState);
 
+
+        /// <inheritdoc />
+        public IServer GetServer(RedisKey key, object asyncState = null, CommandFlags flags = CommandFlags.None)
+            => _wrappedConnectionMultiplexer.GetServer(key, asyncState, flags);
+
+
         /// <inheritdoc />
         public IServer[] GetServers()
             => _wrappedConnectionMultiplexer.GetServers();
