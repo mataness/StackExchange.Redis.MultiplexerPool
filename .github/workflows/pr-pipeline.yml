@@ -23,4 +23,4 @@ jobs:
       - run: dotnet restore
       - run: dotnet build --no-restore --configuration Release
       - run: dotnet format --verify-no-changes
-      - run: dotnet test --no-build --no-restore --collect:"XPlat Code Coverage"
+      - run: dotnet test --collect:"XPlat Code Coverage"
