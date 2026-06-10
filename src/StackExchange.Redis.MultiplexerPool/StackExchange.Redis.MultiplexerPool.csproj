@@ -13,8 +13,10 @@
 		<Company>StackExchange.Redis.MultiplexerPool</Company>
 		<AssemblyName>StackExchange.Redis.MultiplexerPool</AssemblyName>
 		<RootNamespace>StackExchange.Redis.MultiplexerPool</RootNamespace>
-		<Version>2.2.0</Version>
+		<Version>2.2.1</Version>
 		<PackageReleaseNotes>
+			2.2.1
+			- Bumping StackExchange.Redis to 2.13.17
 			2.2.0
 			- Adding support for .net standard 2.0
 			2.1.0
@@ -28,11 +30,11 @@
 		</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup Condition="('$(TargetFramework)'=='netstandard2.0')">
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.14" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
-		<PackageReference Include="StackExchange.Redis" Version="2.7.33" />
+		<PackageReference Include="StackExchange.Redis" Version="2.13.17" />
 	</ItemGroup>
 
 </Project>

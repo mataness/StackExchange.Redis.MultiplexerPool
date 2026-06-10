@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<AssemblyName>StackExchange.Redis.MultiplexerPool.Tests</AssemblyName>
 		<RootNamespace>StackExchange.Redis.MultiplexerPool.Tests</RootNamespace>
 	</PropertyGroup>
