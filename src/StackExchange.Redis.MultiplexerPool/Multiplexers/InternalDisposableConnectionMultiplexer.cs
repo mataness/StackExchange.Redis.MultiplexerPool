@@ -246,6 +246,7 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
             remove => _wrappedConnectionMultiplexer.ConfigurationChangedBroadcast -= value;
         }
 
+        /// <inheritdoc />
         public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent
         {
             add => _wrappedConnectionMultiplexer.ServerMaintenanceEvent += value;
@@ -258,6 +259,10 @@ namespace StackExchange.Redis.MultiplexerPool.Multiplexers
             add => _wrappedConnectionMultiplexer.HashSlotMoved += value;
             remove => _wrappedConnectionMultiplexer.HashSlotMoved -= value;
         }
+
+        /// <inheritdoc />
+        public IServer GetServer(RedisKey key, object asyncState = null, CommandFlags flags = CommandFlags.None)
+    => _wrappedConnectionMultiplexer.GetServer(key, asyncState, flags);
 
         private static InvalidOperationException CreateDisposeNotAllowedException()
             => new InvalidOperationException($"Disposing or closing the connection of '{nameof(IConnectionMultiplexer)}' is not allowed, please dispose / close the '{nameof(IConnectionMultiplexerPool)}' instead");

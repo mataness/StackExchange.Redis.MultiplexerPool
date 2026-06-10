@@ -6,36 +6,22 @@ on:
       - master
       - develop
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v6
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v2
+      - uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: 9.0.x
+          cache: true
 
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --no-restore
-
-      - name: Run tests
-        run: dotnet test --no-restore --verbosity normal
-        
-      - name: Run code linting
-        run: dotnet format --verify-no-changes
-        continue-on-error: true
-      
-      - name: Check code coverage
-        run: dotnet test --collect:"XPlat Code Coverage"
-  
-      - name: Run security scan
-        uses: github/codeql-action/init@v1
-        with:
-          languages: csharp
+      - run: dotnet restore
+      - run: dotnet build --no-restore --configuration Release
+      - run: dotnet format --verify-no-changes
+      - run: dotnet test --no-build --no-restore --collect:"XPlat Code Coverage"
