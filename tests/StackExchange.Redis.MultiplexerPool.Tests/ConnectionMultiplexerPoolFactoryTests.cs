@@ -43,7 +43,7 @@ namespace StackExchange.Redis.MultiplexerPool.Tests
              will not result in exception as the connections are lazily created */
             _createdPool = ConnectionMultiplexerPoolFactory.Create(
                 poolSize,
-                _fixture.Create<string>() ,
+                _fixture.Create<string>(),
                 connectionSelectionStrategy: strategy) as ConnectionMultiplexerPool;
         }
 
@@ -58,7 +58,7 @@ namespace StackExchange.Redis.MultiplexerPool.Tests
         }
 
         private void The_size_of_the_pool_is(int expectedSize)
-            => AssertionExtensions.Should((int) _createdPool.PoolSize).Be(expectedSize);
+            => AssertionExtensions.Should((int)_createdPool.PoolSize).Be(expectedSize);
 
         private Fixture _fixture;
         private ConnectionMultiplexerPool _createdPool;

@@ -8,7 +8,7 @@ namespace StackExchange.Redis.MultiplexerPool.Infra.Common
     /// </summary>
     internal static class Guard
     {
-                /// <summary>
+        /// <summary>
         /// Throws an exception if <paramref name="shouldThrow"/> is true
         /// </summary>
         /// <param name="shouldThrow">
